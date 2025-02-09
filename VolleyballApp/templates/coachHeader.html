@@ -1,0 +1,32 @@
+<header>
+    <div style="background: linear-gradient(to right, #33ccff 0%, #99ff99 98%);">
+        <div style="display: flex; flex-direction: row;">
+            <h3 style="margin-left: 45%; margin-top: 2%;">Coach</h3>  
+            <button style="margin-left: 45%;" onclick="redirectLogout()">Logout</button>                  
+        </div>
+        <div style="display: flex; flex-direction: row; margin-top: 2%;">
+            <button onclick="redirectDeleteMatch()" style="margin-left: 25%; margin-right: 5%;">Delete Match Sessions</button>
+            <button onclick="redirectAddMatch()" style="margin-right: 5%;">Add Match Session</button>
+            <button onclick="redirectCreateSquad()" style="margin-right: 5%;">Create Squad</button>
+            <button  onclick="redirectStad()">List Stadium Names</button>
+        </div>
+    </div>
+</header>
+
+<script>
+    function redirectDeleteMatch(){
+        window.location.href = "/coach/deleteMatch"
+    }
+    function redirectAddMatch(){
+        window.location.href = "/coach/addMatch"
+    }
+    function redirectCreateSquad(){
+        window.location.href = "/coach/createSquad"
+    }
+    function redirectStad(){
+        window.location.href = "/coach/stadium"
+    }
+    function redirectLogout(){
+        window.location.href = "/logout"
+    }
+</script>

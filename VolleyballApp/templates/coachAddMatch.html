@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    {% include "coachHeader.html" %}
+    <body>
+        {% if status == False %}
+            <h2 style="margin-left: 36%">You are not directing any team currently.</h2>
+        {%else%}
+            <form  onsubmit="redirectDate(); return false;">
+                <input style="margin-left: 42%; margin-top: 4%;" type="date" id="dateInput" required>
+                <br><br>
+                <button style="margin-left: 40%;" type="submit">Search Available Match Slots</button>
+            </form>
+        {%endif%}
+        <div style="margin-top: 2%">
+        {% if insert == -1 %}
+            <h3>Something Went Wrong</h3>
+        {%elif insert == 1 %}
+            <h3>Match Succesfully Created</h3>
+        {%endif%}
+        </div>
+    </body>
+</html>
+
+<script>
+    function redirectDate(){
+        var dateInput = document.getElementById("dateInput").value;
+        var formattedDate = encodeURIComponent(dateInput);
+        var exampleURL = "/coach/addMatch?date=" + formattedDate;
+        window.location.href = exampleURL;
+    }
+</script>

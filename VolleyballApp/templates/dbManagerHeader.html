@@ -1,0 +1,32 @@
+<header>
+    <div style="background: linear-gradient(to right, #33ccff 0%, #99ff99 98%);">
+        <div style="display: flex; flex-direction: row;">
+            <h3 style="margin-left: 45%; margin-top: 2%;">Database Manager</h3>  
+            <button style="margin-left: 40%;" onclick="redirectLogout()">Logout</button>                  
+        </div>
+        <div style="display: flex; flex-direction: row; margin-top: 2%;">
+            <button onclick="redirectAddPlayers()" style="margin-left: 30%; margin-right: 5%;">Add Players</button>
+            <button onclick="redirectAddCoaches()" style="margin-right: 5%;">Add Coaches</button>
+            <button onclick="redirectAddJuries()" style="margin-right: 5%;">Add Juries</button>
+            <button  onclick="redirectStad()">Change Stadium Names</button>
+        </div>
+    </div>
+</header>
+
+<script>
+    function redirectAddPlayers(){
+        window.location.href = "/manager/addPlayers"
+    }
+    function redirectAddCoaches(){
+        window.location.href = "/manager/addCoaches"
+    }
+    function redirectAddJuries(){
+        window.location.href = "/manager/addJuries"
+    }
+    function redirectStad(){
+        window.location.href = "/manager/stadium"
+    }
+    function redirectLogout(){
+        window.location.href = "/logout"
+    }
+</script>

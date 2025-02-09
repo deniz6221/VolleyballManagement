@@ -1,0 +1,24 @@
+<header>
+    <div style="background: linear-gradient(to right, #33ccff 0%, #99ff99 98%);">
+        <div style="display: flex; flex-direction: row;">
+            <button onclick="redirectHome()">Home</button>
+            <h3 style="margin-left: 45%; margin-top: 2%;">Jury</h3>  
+            <button style="margin-left: 45%;" onclick="redirectLogout()">Logout</button>                  
+        </div>
+        <div style="display: flex; flex-direction: row; margin-top: 2%;">
+            <button onclick="redirectRateMatch()" style="margin-left: 45%; margin-right: 5%;">Rate Match Sessions</button>
+        </div>
+    </div>
+</header>
+
+<script>
+    function redirectHome(){
+        window.location.href = "/jury"
+    }
+    function redirectRateMatch(){
+        window.location.href = "/jury/rate"
+    }
+    function redirectLogout(){
+        window.location.href = "/logout"
+    }
+</script>

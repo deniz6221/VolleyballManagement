@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <header>
+        <div style="background: linear-gradient(to right, #33ccff 0%, #99ff99 98%);">
+            <div style="display: flex; flex-direction: row;">
+                <h3 style="margin-left: 45%; margin-top: 2%;">Player</h3>  
+                <button style="margin-left: 45%;" onclick="redirectLogout()">Logout</button>                  
+            </div>
+        </div>
+    </header>
+    <body>
+        <div class="tab">
+            <h2 style="margin-left:38%; margin-top: 2%;">Welcome back {{ username }}</h2>
+        </div>
+        <div style="margin-top: 2%;">
+            <h4>Average height of the players that you played with the most: {{height}}</h4>
+        </div>
+        <div style="margin-top: 5%;">
+            <h4 style="margin-left: 30%;">Names and Surnames of Players That You Played With Within A Session</h4>
+            <table>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Player Surname</th>
+                </tr>
+                {% for p in players %}
+                  <tr>
+                    <td>{{p.name}}</td>
+                    <td>{{p.surname}}</td>
+                  </tr>
+                {% endfor %}
+            <table>
+        </div>
+    </body>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</html>
+
+<script>
+    function redirectLogout(){
+        window.location.href = "/logout"
+    }
+</script>

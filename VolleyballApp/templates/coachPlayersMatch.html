@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    {% include "coachHeader.html" %}
+    <body>
+        <form action="" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <h3>Match Info:</h3>
+            <div style="display: flex; flex-direction: row; margin-top: 2%;">
+                <label for="matchId">Match ID: </label>
+                <input id="matchId" style="margin-left: 2%; margin-right: 35%;"  name="matchId" readonly type="text" value="{{matchId}}">
+                <label for="matchDate">Match Date: </label>
+                <input id="matchDate" name="matchDate" readonly type="text" value="{{matchDate}}">
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: row;">
+            <div style="margin-right: 40%; margin-top: 2%; margin-left: 4%;">
+                <h3>Available Players </h3>
+                <h3 id="error" style="display: none; color: red;">You have to pick 6 players in order to submit</h3>
+                {% for i in players %}
+                <input onchange="playerSelect(this)" id="{{i.username}}" name="{{i.username}}" type="checkbox">
+                <label for="{{i.username}}">{{i.name}}</label>
+                <br>
+                {% endfor %}
+            </div>
+            <div style="margin-top: 2%;">
+                <h3>Positions: </h3>
+                <div id="positionSelects">
+                    {% for pl in players %}
+                    <div id="div_{{pl.username}}" style="display: none; margin-bottom: 4%;">
+                        <label for="pos_{{pl.username }}">{{pl.name}}</label>
+                        <select name="pos_{{pl.username}}">
+                            {% for j in pl.positions %}
+                                <option value="{{j.position_id}}">{{j.position}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <input style="margin-left: 50%; margin-top: 4%;" type="submit" value="Create Squad">
+    </form>
+    </body>
+</html>
+
+<script>
+
+    function playerSelect(checkbox){
+        if(checkbox.checked){
+            
+            let posSelect = document.getElementById("div_" + checkbox.id )
+            posSelect.style.display = "block"
+
+        }
+        else{
+            let posSelect = document.getElementById("div_" + checkbox.id )
+            posSelect.style.display = "none"
+        }
+    }
+    function validateForm(){
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let selectedCount = 0;
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+            selectedCount++;
+            }
+        })
+        if (selectedCount != 6){
+            document.getElementById("error").style.display = "block";
+            return false;
+        }
+        return true;
+    }
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    {% include "coachHeader.html" %}
+    <div>
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="margin-left: 41%; margin-top: 2%;">
+                {{ form.as_p }}
+            </div>    
+            <input style="margin-top: 2%; margin-left: 43%; width: 10%;" value="Delete Match" type="submit">
+        </form>
+    </div>
+    {% if status == 1 %}
+        <h3>Match succesfully deleted.</h3>
+    {% endif %}
+    {% if status == -1 %}
+        <h3>Something went wrong.</h3>
+    {% endif %}
+
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    {% include "coachHeader.html" %}
+    <div>
+        <table>
+            <tr>
+                <th>Stadium Id</th>
+                <th>Stadium Name</th>
+                <th>Stadium Country</th>
+            </tr>
+            {% for stad in stadiums %}
+              <tr>
+                <td>{{stad.stadium_ID}}</td>
+                <td>{{stad.stadium_name}}</td>
+                <td>{{stad.stadium_country}}</td>
+              </tr>
+            {% endfor %}
+        <table>
+    </div>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 3%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+
+</html>

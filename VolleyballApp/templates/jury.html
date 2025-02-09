@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    {% include "juryHeader.html" %}
+    <body>
+        <div class="tab">
+            <h2 style="margin-left:38%; margin-top: 2%;">Welcome back {{ username }}</h2>
+        </div>
+        <div style="margin-top: 2%; display: flex; flex-direction: row;">
+            <h4 style="margin-left: 3%; margin-right: 50%;">Average rating of the matches you rated: {{average}}</h4>
+            <h4>Total number of matches you rated: {{count}}</h4>
+        </div>
+
+</html>

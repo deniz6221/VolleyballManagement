@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    {% include "juryHeader.html" %}
+    <body>
+        <div>
+            <h3 style="margin-left: 40%;">Matches That Are Rateable By You:</h3>
+            {% for i in matches %}
+            <div class="box">
+                <a href="/jury/rate?id={{i.id}}">Match Session With ID: {{i.id}}</a>
+                <p>Played in {{i.date}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% if status %}
+            <h4>Match successfully rated</h4>
+        {% endif %}
+    </body>
+
+</html>
+
+<style>
+    .box{
+        margin-top: 2%;
+        margin-left: 40%;
+        width: 200px;
+        height: 50px;
+        background-color: lightblue;
+        border: 1px solid black;
+        padding: 20px;
+    }
+</style>

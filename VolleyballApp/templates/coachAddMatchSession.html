@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    {% include "coachHeader.html" %}
+    <body>
+        <h3 id="errorS" style="display: none;color: red;">There are no available stadiums for this time slot.</h3>
+        <form action="" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="display: flex; flex-direction: row; margin-left: 20%; margin-top: 2%;">
+                <label for="timeSelect">Start Slot:</label>
+                <select onchange="timeChange()" style="margin-right: 19.5%;" name="timeSlot" id="timeSelect">
+                    <option value="1">Time Slot 1</option>
+                    <option value="2">Time Slot 2</option>
+                    <option value="3">Time Slot 3</option>
+                </select>
+                <label for="stadiumSelect">Available Stadiums:</label>
+                <select name="stadium" id="stadiumSelect">
+                    {% for i in data.0 %}
+                        <option value="{{i.0}}">{{i.1}}</option>
+                    {% endfor %}
+                </select>                
+            </div>
+            <div style=" margin-left: 20%; margin-top: 2%;">
+                <label for="teamName">Your Team Name: </label>
+                <input style="margin-right: 10%;" id="teamName" readonly type="text" value="{{team_name}}">
+                <label for="mDate">Match Date: </label>
+                <input name="matchDate" type="text" value="{{date}}" id="mDate" readonly>
+            </div>
+            <div style="display: flex; flex-direction: row;margin-left: 20%; margin-top: 2%;">
+                <label for="sessionId">Your Session ID: </label>
+                <input style="margin-right: 9.5%;" id="teamId" readonly type="text" value="{{session_id}}">
+                <label for="jurySelect">Select a Jury For Your Match: </label>
+                <select name="jury" id="jurySelect">
+                    {% for j in juries %}
+                    <option value="{{j.id}}">{{j.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input style="margin-left: 40%; margin-top: 2%;" type="submit" value="Create Match Session">
+        </form>
+    </body>
+</html>
+
+<script>
+    var data = JSON.parse("{{ jsondata|escapejs }}");
+    function timeChange(){
+        var selectedIndex = document.getElementById("timeSelect").value;
+        let html = "";
+        for (let i=0; i<data[selectedIndex-1].length; i++){
+            html += "<option value='" + data[selectedIndex-1][i][0] + "'>" + data[selectedIndex-1][i][1] + "</option>\n";
+        }
+        document.getElementById("stadiumSelect").innerHTML = html;
+    }
+    function validateForm(){
+        select = document.getElementById("stadiumSelect");
+        if (select.selectedIndex == -1){
+            document.getElementById("errorS").style.display = "block";
+            return false;
+        }
+        return true;
+    }
+</script>

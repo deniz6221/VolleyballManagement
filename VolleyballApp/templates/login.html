@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <body style="background: linear-gradient(to right, #33ccff 0%, #99ff99 98%);">
+        <h2 style="margin-left: 40%; margin-top: 5%;">Volleyball Management</h2>
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if invalid_login %}
+            <p style="color: red; margin-left: 41%;">Invalid username or password</p>
+            {% endif %}
+            <input style="margin-top: 2%; margin-left: 43%; width: 10%;" value="Login" type="submit">
+        </form>
+    </body>  
+
+</html>
+
+<style>
+    label{
+        margin-left: 40%;
+    }
+</style>
